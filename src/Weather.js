@@ -5,17 +5,14 @@ import axios from "axios";
 function Weather() {
   const [city, setCity] = useState("");
   const [weathercity, setWeather] = useState({});
-  const [temp, setTemp] = useState(null);
+  // const [temp, setTemp] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
   //Feature #1 In your project, display the current date and time using JavaScript: Tuesday 16:00
 
-  let date = new Date();
-  let hours = date.getHours();
-  let minut = date.getMinutes();
-  let day = date.getDay();
+  /*  let date = new Date(); */
 
-  let weekDay = [
+  /* let weekDay = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -23,7 +20,7 @@ function Weather() {
     "Thursday",
     "Friday",
     "Saturday",
-  ];
+  ]; */
 
   function updateCity(event) {
     setCity(event.target.value);
@@ -39,7 +36,7 @@ function Weather() {
     function displayWeather(response) {
       setLoaded(true);
 
-      setTemp(response.data.main.humidity);
+      //setTemp(response.data.main.humidity);
       setWeather({
         humidity: response.data.main.humidity,
         wind: response.data.wind.speed,
@@ -87,7 +84,7 @@ function Weather() {
                     <div>
                       <span id="temperature">{weathercity.temperatura}</span>
                       <span>
-                        <a href="#" id="celsius-link">
+                        <a href="/" id="celsius-link">
                           °C
                         </a>
                       </span>
@@ -142,9 +139,7 @@ function Weather() {
                     <div>
                       <span id="temperature"></span>
                       <span>
-                        <a href="#" id="celsius-link">
-                          °C
-                        </a>
+                        <span id="celsius-link">°C</span>
                       </span>
                     </div>
                   </div>
