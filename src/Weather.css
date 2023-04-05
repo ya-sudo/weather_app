@@ -1,0 +1,27 @@
+.Weather ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  color: #878787;
+  font-family: arial, sans-serif;
+}
+.Weather h1 {
+  margin-bottom: 0;
+}
+.container {
+  border: 1px solid rgb(223, 222, 222);
+  padding: 20px 16px 24px;
+}
+.dFlex {
+  display: flex;
+  margin: 10px 0 20px;
+}
+.inputForm {
+  width: 300px;
+  margin: 0 10px 0 0;
+}
+.sottoTitolo {
+  font-size: 16px;
+}

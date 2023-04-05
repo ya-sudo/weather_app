@@ -1,7 +1,6 @@
-/* import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css"; */
 import { useState } from "react";
 import axios from "axios";
+import "./Weather.css";
 function Weather() {
   const [city, setCity] = useState("");
   const [weathercity, setWeather] = useState({});
@@ -50,108 +49,87 @@ function Weather() {
 
   if (loaded) {
     return (
-      <div>
+      <div className="Weather container">
+        <form id="search-form" onSubmit={handelSubmit}>
+          <div className="dFlex">
+            <input
+              className="form-control inputForm"
+              type="search"
+              placeholder="Type a city.."
+              id="city-input"
+              onChange={updateCity}
+            />
+
+            <input className="btn btn-primary" type="submit" value="Search" />
+          </div>
+        </form>
+
+        <ul>
+          <li>
+            <h1 id="city">{city}</h1>
+          </li>
+          <li className="sottoTitolo" id="date">
+            Sunday 09:50
+          </li>
+          <li className="sottoTitolo">Partly Cloudy</li>
+        </ul>
         <div>
           <div>
             <div>
-              <form id="search-form" onSubmit={handelSubmit}>
-                <div>
-                  <div>
-                    <input
-                      type="search"
-                      placeholder="Type a city.."
-                      id="city-input"
-                      onChange={updateCity}
-                    />
-                  </div>
-                  <div>
-                    <input type="submit" value="Search" />
-                  </div>
-                  <div>
-                    <input type="submit" value="Current" />
-                  </div>
-                </div>
-              </form>
-
-              <h1 id="city">{city}</h1>
-              <ul>
-                <li id="date">Sunday 09:50</li>
-                <li>Partly Cloudy</li>
-              </ul>
               <div>
-                <div>
-                  <div>
-                    <div>
-                      <span id="temperature">{weathercity.temperatura}</span>
-                      <span>
-                        <a href="/" id="celsius-link">
-                          °C
-                        </a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <ul>
-                    <li>humidity: {weathercity.humidity}</li>
-                    <li>Wind: {weathercity.wind}</li>
-                  </ul>
-                </div>
+                <span id="temperature">{weathercity.temperatura}</span>
+                <span>
+                  <a href="/" id="celsius-link">
+                    °C
+                  </a>
+                </span>
               </div>
             </div>
+          </div>
+          <div>
+            <ul>
+              <li>humidity: {weathercity.humidity}</li>
+              <li>Wind: {weathercity.wind}</li>
+            </ul>
           </div>
         </div>
       </div>
     );
   } else {
     return (
-      <div>
+      <div className="Weather container">
+        <form id="search-form" onSubmit={handelSubmit}>
+          <div className="dFlex">
+            <input
+              className="form-control inputForm"
+              type="search"
+              placeholder="Type a city.."
+              id="city-input"
+              onChange={updateCity}
+            />
+
+            <input className="btn btn-primary" type="submit" value="Search" />
+          </div>
+        </form>
+
+        <ul>
+          <li>
+            <h1 id="city">Sidney</h1>
+          </li>
+          <li className="sottoTitolo" id="date">
+            Sunday 09:50
+          </li>
+          <li className="sottoTitolo">Partly Cloudy</li>
+        </ul>
         <div>
           <div>
-            <div>
-              <form id="search-form" onSubmit={handelSubmit}>
-                <div>
-                  <div>
-                    <input
-                      type="search"
-                      placeholder="Type a city.."
-                      id="city-input"
-                      onChange={updateCity}
-                    />
-                  </div>
-                  <div>
-                    <input type="submit" value="Search" />
-                  </div>
-                  <div>
-                    <input type="submit" value="Current" />
-                  </div>
-                </div>
-              </form>
-
-              <h1 id="city">Sidney</h1>
-              <ul>
-                <li id="date">Sunday 09:50</li>
-                <li>Partly Cloudy</li>
-              </ul>
-              <div>
-                <div>
-                  <div>
-                    <div>
-                      <span id="temperature"></span>
-                      <span>
-                        <span id="celsius-link">°C</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <ul>
-                    <li>humidity: </li>
-                    <li>Wind: </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            6<span id="celsius-link">°C</span>
+          </div>
+          <div>
+            <ul>
+              <li>humidity: </li>
+              <li>Wind: </li>
+            </ul>
           </div>
         </div>
       </div>
