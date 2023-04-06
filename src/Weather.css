@@ -13,6 +13,9 @@
 .container {
   border: 1px solid rgb(223, 222, 222);
   padding: 20px 16px 24px;
+  text-align: left;
+
+  width: 600px !important;
 }
 .dFlex {
   display: flex;
@@ -24,4 +27,10 @@
 }
 .sottoTitolo {
   font-size: 16px;
+}
+.realTemp {
+  font-size: 65px;
+}
+.temperatura {
+  color: black;
 }

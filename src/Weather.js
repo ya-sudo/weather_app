@@ -7,20 +7,6 @@ function Weather() {
   // const [temp, setTemp] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
-  //Feature #1 In your project, display the current date and time using JavaScript: Tuesday 16:00
-
-  /*  let date = new Date(); */
-
-  /* let weekDay = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ]; */
-
   function updateCity(event) {
     setCity(event.target.value);
     console.log(setCity, event.target.value);
@@ -40,6 +26,8 @@ function Weather() {
         humidity: response.data.main.humidity,
         wind: response.data.wind.speed,
         temperatura: response.data.main.temp,
+        description: response.data.weather[0].description,
+        name: response.data.name,
       });
     }
     console.log(axios.get(apiCall));
@@ -49,89 +37,117 @@ function Weather() {
 
   if (loaded) {
     return (
-      <div className="Weather container">
-        <form id="search-form" onSubmit={handelSubmit}>
-          <div className="dFlex">
-            <input
-              className="form-control inputForm"
-              type="search"
-              placeholder="Type a city.."
-              id="city-input"
-              onChange={updateCity}
-            />
+      <div>
+        <div className="Weather container">
+          <form id="search-form" onSubmit={handelSubmit}>
+            <div className="dFlex">
+              <input
+                className="form-control inputForm"
+                type="search"
+                placeholder="Type a city.."
+                id="city-input"
+                onChange={updateCity}
+              />
 
-            <input className="btn btn-primary" type="submit" value="Search" />
-          </div>
-        </form>
+              <input className="btn btn-primary" type="submit" value="Search" />
+            </div>
+          </form>
 
-        <ul>
-          <li>
-            <h1 id="city">{city}</h1>
-          </li>
-          <li className="sottoTitolo" id="date">
-            Sunday 09:50
-          </li>
-          <li className="sottoTitolo">Partly Cloudy</li>
-        </ul>
-        <div>
-          <div>
-            <div>
-              <div>
-                <span id="temperature">{weathercity.temperatura}</span>
-                <span>
-                  <a href="/" id="celsius-link">
-                    °C
-                  </a>
-                </span>
-              </div>
+          <ul>
+            <li>
+              <h1 id="city">
+                {/*  {city} */}
+                {weathercity.name}
+              </h1>
+            </li>
+            <li className="sottoTitolo" id="date">
+              Sunday 09:50
+            </li>
+            <li className="sottoTitolo">{weathercity.description}</li>
+          </ul>
+
+          {/* mgdkmgd */}
+          <div className="row">
+            <div className="col-6 temperatura">
+              <img
+                src="https://openweathermap.org/img/wn/13d@2x.png"
+                alt="Italian Trulli"
+              />
+              <span className="realTemp">{weathercity.temperatura}</span>
+              <span id="celsius-link">°C</span>
+            </div>
+            <div className="col-6">
+              <ul>
+                <li className="sottoTitolo">
+                  Precipitation:{weathercity.Precipitation}
+                </li>
+                <li className="sottoTitolo">Humidity:{weathercity.humidity}</li>
+                <li className="sottoTitolo">Wind:{weathercity.wind} </li>
+              </ul>
             </div>
           </div>
-          <div>
-            <ul>
-              <li>humidity: {weathercity.humidity}</li>
-              <li>Wind: {weathercity.wind}</li>
-            </ul>
-          </div>
         </div>
+        <span className="sottoTitolo">
+          <a href="https://github.com/ya-sudo/weather_app"> Open-source code</a>
+          , by Yani from
+          <a href="https://www.shecodes.io/workshops?gclid=Cj0KCQjw27mhBhC9ARIsAIFsETGMlF1QEOPSI0hWOk6PisX1Pz1iUyEydmkePEWiLCZ5fg0SBRLBHhgaApU5EALw_wcB">
+            She Codes
+          </a>
+        </span>
       </div>
     );
   } else {
     return (
-      <div className="Weather container">
-        <form id="search-form" onSubmit={handelSubmit}>
-          <div className="dFlex">
-            <input
-              className="form-control inputForm"
-              type="search"
-              placeholder="Type a city.."
-              id="city-input"
-              onChange={updateCity}
-            />
+      <div>
+        <div className="Weather container">
+          <form id="search-form" onSubmit={handelSubmit}>
+            <div className="dFlex">
+              <input
+                className="form-control inputForm"
+                type="search"
+                placeholder="Type a city.."
+                id="city-input"
+                onChange={updateCity}
+              />
 
-            <input className="btn btn-primary" type="submit" value="Search" />
-          </div>
-        </form>
-
-        <ul>
-          <li>
-            <h1 id="city">Sidney</h1>
-          </li>
-          <li className="sottoTitolo" id="date">
-            Sunday 09:50
-          </li>
-          <li className="sottoTitolo">Partly Cloudy</li>
-        </ul>
-        <div>
-          <div>
-            6<span id="celsius-link">°C</span>
-          </div>
-          <div>
-            <ul>
-              <li>humidity: </li>
-              <li>Wind: </li>
-            </ul>
+              <input className="btn btn-primary" type="submit" value="Search" />
+            </div>
+          </form>
+          <ul>
+            <li>
+              <h1 id="city">Sidney</h1>
+            </li>
+            <li className="sottoTitolo" id="date">
+              Sunday 09:50
+            </li>
+            <li className="sottoTitolo">Partly Cloudy</li>
+          </ul>
+          {/* secondo blocco */}
+          <div className="row">
+            <div className="col-6 temperatura">
+              <img
+                src="https://openweathermap.org/img/wn/13d@2x.png"
+                alt="Italian Trulli"
+              />
+              <span className="realTemp">6</span>
+              <span id="celsius-link">°C</span>
+            </div>
+            <div className="col-6">
+              <ul>
+                <li className="sottoTitolo">Precipitation: </li>
+                <li className="sottoTitolo">Humidity: </li>
+                <li className="sottoTitolo">Wind: </li>
+              </ul>
+            </div>
           </div>
         </div>
+        <span className="sottoTitolo">
+          <a href="https://github.com/ya-sudo/weather_app"> Open-source code</a>
+          , by Yani from
+          <a href="https://www.shecodes.io/workshops?gclid=Cj0KCQjw27mhBhC9ARIsAIFsETGMlF1QEOPSI0hWOk6PisX1Pz1iUyEydmkePEWiLCZ5fg0SBRLBHhgaApU5EALw_wcB">
+            She Codes
+          </a>
+        </span>
       </div>
     );
   }
