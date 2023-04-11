@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import WeatherComponent from "./WeatherComponent";
 function Weather() {
   const [city, setCity] = useState("");
   const [weathercity, setWeather] = useState({});
@@ -28,6 +29,7 @@ function Weather() {
         temperatura: response.data.main.temp,
         description: response.data.weather[0].description,
         name: response.data.name,
+        img: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       });
     }
     console.log(axios.get(apiCall));
@@ -53,39 +55,7 @@ function Weather() {
             </div>
           </form>
 
-          <ul>
-            <li>
-              <h1 id="city">
-                {/*  {city} */}
-                {weathercity.name}
-              </h1>
-            </li>
-            <li className="sottoTitolo" id="date">
-              Sunday 09:50
-            </li>
-            <li className="sottoTitolo">{weathercity.description}</li>
-          </ul>
-
-          {/* mgdkmgd */}
-          <div className="row">
-            <div className="col-6 temperatura">
-              <img
-                src="https://openweathermap.org/img/wn/13d@2x.png"
-                alt="Italian Trulli"
-              />
-              <span className="realTemp">{weathercity.temperatura}</span>
-              <span id="celsius-link">°C</span>
-            </div>
-            <div className="col-6">
-              <ul>
-                <li className="sottoTitolo">
-                  Precipitation:{weathercity.Precipitation}
-                </li>
-                <li className="sottoTitolo">Humidity:{weathercity.humidity}</li>
-                <li className="sottoTitolo">Wind:{weathercity.wind} </li>
-              </ul>
-            </div>
-          </div>
+          <WeatherComponent data={weathercity} />
         </div>
         <span className="sottoTitolo">
           <a href="https://github.com/ya-sudo/weather_app"> Open-source code</a>
@@ -134,7 +104,6 @@ function Weather() {
             </div>
             <div className="col-6">
               <ul>
-                <li className="sottoTitolo">Precipitation: </li>
                 <li className="sottoTitolo">Humidity: </li>
                 <li className="sottoTitolo">Wind: </li>
               </ul>
