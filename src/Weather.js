@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import WeatherForecastWeek from "./WeatherForecastWeek";
 import WeatherComponent from "./WeatherComponent";
 function Weather() {
   const [city, setCity] = useState("");
@@ -26,7 +27,7 @@ function Weather() {
       setWeather({
         humidity: response.data.main.humidity,
         wind: response.data.wind.speed,
-        temperatura: response.data.main.temp,
+        temperatura: Math.round(response.data.main.temp),
         description: response.data.weather[0].description,
         name: response.data.name,
         img: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
@@ -56,6 +57,7 @@ function Weather() {
           </form>
 
           <WeatherComponent data={weathercity} />
+          <WeatherForecastWeek data={weathercity} />
         </div>
         <span className="sottoTitolo">
           <a href="https://github.com/ya-sudo/weather_app"> Open-source code</a>
